@@ -16,11 +16,11 @@ import (
 func main() {
 	config := tel.Config{
 		ServiceName: "echo-v4-server-demo-tracer",
-		Endpoint:    "mon-o2.cb-b2b.dev",
+		Endpoint:    "....", // TODO: Replace with your endpoint
 		IsSecure:    true,
-		BasicAuth:   "ZGV2QHNlbGx5LnZuOnNlbGx5QDEyMw==",
+		BasicAuth:   "....", // TODO: Replace with your basic auth credentials
 		Environment: "development",
-		StreamName:  "case",
+		StreamName:  "default",
 	}
 	// Initialize OpenTelemetry
 	tp := tel.InitTracerHTTP(config)
