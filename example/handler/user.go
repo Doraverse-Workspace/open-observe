@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	db "github.com/Doraverse-Workspace/open-obverse/example/mongo"
-	"github.com/Doraverse-Workspace/open-obverse/example/mongo/model"
-	tracermodule "github.com/Doraverse-Workspace/open-obverse/otel"
+	db "github.com/Doraverse-Workspace/open-observe/example/mongo"
+	"github.com/Doraverse-Workspace/open-observe/example/mongo/model"
+	tracermodule "github.com/Doraverse-Workspace/open-observe/otel"
 	"github.com/labstack/echo/v4"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.opentelemetry.io/otel/trace"

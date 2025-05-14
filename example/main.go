@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Doraverse-Workspace/open-obverse/example/handler"
-	db "github.com/Doraverse-Workspace/open-obverse/example/mongo"
-	tel "github.com/Doraverse-Workspace/open-obverse/otel"
+	"github.com/Doraverse-Workspace/open-observe/example/handler"
+	db "github.com/Doraverse-Workspace/open-observe/example/mongo"
+	tel "github.com/Doraverse-Workspace/open-observe/otel"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -64,6 +64,7 @@ func main() {
 
 	// User routes
 	e.POST("/users", userHandler.CreateUser)
+
 	e.GET("/users", userHandler.ListUsers)
 
 	// Health check

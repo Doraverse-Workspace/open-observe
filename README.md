@@ -2,7 +2,7 @@
 
 # Install
 ```
-go get -u github.com/Doraverse-Workspace/open-obverse@latest
+go get -u github.com/Doraverse-Workspace/open-observe@latest
 ```
 
 # Project Information

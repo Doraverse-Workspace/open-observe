@@ -1,8 +1,6 @@
-module github.com/Doraverse-Workspace/open-obverse
+module github.com/Doraverse-Workspace/open-observe
 
 go 1.22.0
-
-toolchain go1.24.2
 
 require (
 	github.com/google/uuid v1.6.0
