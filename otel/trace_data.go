@@ -3,6 +3,7 @@ package otel
 import (
 	"time"
 
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -72,4 +73,9 @@ func NewTraceData() TraceData {
 		Region:      "local",
 		StartTime:   time.Now(),
 	}
+}
+
+// NewTracer returns a new tracer for the given service name
+func NewTracer(serviceName string) trace.Tracer {
+	return otel.Tracer(serviceName)
 }
