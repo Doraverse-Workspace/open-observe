@@ -79,3 +79,21 @@ func NewTraceData() TraceData {
 func NewTracer(serviceName string) trace.Tracer {
 	return otel.Tracer(serviceName)
 }
+
+// TraceError traces an error and records it in the span
+func TraceError(span trace.Span, err error) {
+	AddTraceAttributes(span, TraceData{
+		StatusCode: 400,
+		Error:      err,
+		EndTime:    time.Now(),
+	})
+	span.RecordError(err)
+}
+
+// TraceSuccess traces a success and records it in the span
+func TraceSuccess(span trace.Span) {
+	AddTraceAttributes(span, TraceData{
+		StatusCode: 200,
+		EndTime:    time.Now(),
+	})
+}
