@@ -1,10 +1,12 @@
 package otel
 
 import (
+	"net/http"
 	"time"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -61,6 +63,18 @@ func AddTraceAttributes(span trace.Span, data TraceData) {
 		attributes = append(attributes, attribute.String("error.message", data.Error.Error()))
 	}
 
+	if data.StatusCode != 0 {
+		if data.StatusCode == http.StatusOK {
+			span.SetStatus(codes.Ok, "Success")
+		} else {
+			if data.Error != nil {
+				span.SetStatus(codes.Error, data.Error.Error())
+			} else {
+				span.SetStatus(codes.Error, "Unknown error")
+			}
+		}
+	}
+
 	span.SetAttributes(attributes...)
 }
 
@@ -88,6 +102,7 @@ func TraceError(span trace.Span, err error) {
 		EndTime:    time.Now(),
 	})
 	span.RecordError(err)
+	span.SetStatus(codes.Error, err.Error())
 }
 
 // TraceSuccess traces a success and records it in the span
@@ -96,4 +111,5 @@ func TraceSuccess(span trace.Span) {
 		StatusCode: 200,
 		EndTime:    time.Now(),
 	})
+	span.SetStatus(codes.Ok, "Success")
 }
