@@ -31,8 +31,6 @@ func InitTracerHTTP(config Config) *sdktrace.TracerProvider {
 		streamName = config.StreamName
 	}
 
-	fmt.Println("path", path)
-
 	otlptracehttp.NewClient()
 
 	opts := []otlptracehttp.Option{
